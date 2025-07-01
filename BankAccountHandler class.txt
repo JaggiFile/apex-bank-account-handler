@@ -1,0 +1,19 @@
+public class BankAccountHandler {
+    public Decimal balance;
+
+    public BankAccountHandler(Decimal initialBalance) {
+        balance = initialBalance;
+    }
+
+    public void deposit(Decimal amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    public void withdraw(Decimal amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+        }
+    }
+}

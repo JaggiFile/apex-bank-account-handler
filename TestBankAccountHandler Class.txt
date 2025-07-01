@@ -1,0 +1,30 @@
+@isTest
+private class TestBankAccountHandler {
+
+    @isTest
+    static void testDepositAndWithdraw() {
+        BankAccountHandler account = new BankAccountHandler(1000);
+
+        
+        account.deposit(500);
+        System.assertEquals(1500, account.balance, 'Deposit failed');
+
+       
+        account.withdraw(300);
+        System.assertEquals(1200, account.balance, 'Withdraw failed');
+    }
+
+    @isTest
+    static void testNegativeDeposit() {
+        BankAccountHandler account = new BankAccountHandler(100);
+        account.deposit(-100); 
+        System.assertEquals(100, account.balance, 'Negative deposit should not affect balance');
+    }
+
+    @isTest
+    static void testWithdrawMoreThanBalance() {
+        BankAccountHandler account = new BankAccountHandler(200);
+        account.withdraw(500); 
+        System.assertEquals(200, account.balance, 'Over-withdrawal should not affect balance');
+    }
+}
